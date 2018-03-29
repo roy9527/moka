@@ -3,15 +3,13 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask import Flask, render_template
 from datetime import datetime
-import sys, os
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask_sqlalchemy import SQLAlchemy
+import sys, os
 
 baseDir = os.path.abspath(os.path.dirname(__file__))
-
-print(baseDir)
 
 class NameForm(FlaskForm):
     name=StringField('What is your name?', validators=[Required()])
@@ -22,6 +20,7 @@ app.config['SECRET_KEY']='its your dream.'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(baseDir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 manager = Manager(app)
 bootstrap = Bootstrap(app)
