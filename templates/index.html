@@ -1,1 +1,12 @@
-<h1>Hello, World !</h1>
+{% extends "base.html" %} 
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Flasky {% endblock %} 
+{% block page_content %}
+    <div class="page-header">
+        <h1>你好，{% if name %}{{ name }}{% else %}陌生人{% endif %}.</h1>
+    </div>
+    <p>现在时间是： {{ moment(current_time).format('LLL') }}.</p>
+    {{ wtf.quick_form(form) }}
+
+{% endblock %}
